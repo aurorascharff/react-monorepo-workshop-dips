@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from 'react'
 import { ArrowRight, Activity, Users, UserRound } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle, Spinner } from '@medix/ui'
@@ -16,23 +15,18 @@ export function DashboardPage() {
       .finally(() => setIsLoading(false))
   }, [])
 
-  const [stats, setStats] = useState({ total: 0, female: 0, male: 0 })
-  useEffect(() => {
-    setStats({
-      total: patients.length,
-      female: patients.filter((p) => p.gender === 'female').length,
-      male: patients.filter((p) => p.gender === 'male').length,
-    })
-  }, [patients])
+  const total = patients.length
+  const female = patients.filter((p) => p.gender === 'female').length
+  const male = patients.filter((p) => p.gender === 'male').length
 
   if (isLoading) return <Spinner />
 
   const recentPatients = patients.slice(0, 5)
 
   const statCards = [
-    { label: 'Total patients', value: stats.total, icon: Users },
-    { label: 'Female', value: stats.female, icon: UserRound },
-    { label: 'Male', value: stats.male, icon: UserRound },
+    { label: 'Total patients', value: total, icon: Users },
+    { label: 'Female', value: female, icon: UserRound },
+    { label: 'Male', value: male, icon: UserRound },
   ]
 
   return (
@@ -41,7 +35,7 @@ export function DashboardPage() {
         <p className="text-sm font-medium text-primary">Overview</p>
         <h1 className="text-3xl font-bold tracking-tight">Good morning</h1>
         <p className="text-muted-foreground">
-          You have {stats.total} patients under follow-up today.
+          You have {total} patients under follow-up today.
         </p>
       </header>
 

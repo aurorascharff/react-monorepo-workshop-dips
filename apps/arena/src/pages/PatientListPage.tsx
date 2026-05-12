@@ -1,4 +1,4 @@
-import { PatientList } from '@/features/patients/PatientList'
+import { PatientList } from '@/features/patients/components/PatientList'
 import { fetchPatients } from '@/lib/api'
 import { Patient } from '@/types'
 import { Spinner } from '@medix/ui'

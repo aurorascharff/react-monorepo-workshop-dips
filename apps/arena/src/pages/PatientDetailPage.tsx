@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { JournalForm } from '@/features/journal/JournalForm'
-import { JournalList } from '@/features/journal/JournalList'
-import { PatientHeader } from '@/features/patients/PatientHeader'
+import { JournalForm } from '@/features/journal/components/JournalForm'
+import { JournalList } from '@/features/journal/components/JournalList'
+import { PatientHeader } from '@/features/patients/components/PatientHeader'
 import { fetchJournals, fetchPatient, updateJournalStatus } from '@/lib/api'
 import { Patient, Journal, JournalStatus } from '@/types'
 import { useEffect, useState } from 'react'
