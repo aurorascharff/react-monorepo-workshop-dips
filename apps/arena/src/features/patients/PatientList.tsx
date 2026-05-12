@@ -15,10 +15,9 @@ import PatientCard from './PatientCard'
 
 type PatientListProps = {
   patients: Patient[]
-  onSelect: (id: string) => void
 }
 
-export function PatientList({ patients, onSelect }: PatientListProps) {
+export function PatientList({ patients }: PatientListProps) {
   const [search, setSearch] = React.useState('')
   const [genderFilter, setGenderFilter] = React.useState<
     'all' | 'male' | 'female'
@@ -82,11 +81,7 @@ export function PatientList({ patients, onSelect }: PatientListProps) {
       ) : (
         <div className="grid gap-3">
           {filteredPatients.map((patient) => (
-            <PatientCard
-              key={patient.id}
-              patient={patient}
-              onSelectPatient={onSelect}
-            />
+            <PatientCard key={patient.id} patient={patient} />
           ))}
         </div>
       )}
