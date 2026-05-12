@@ -2,10 +2,11 @@ import Database from 'better-sqlite3'
 import path from 'path'
 import { drizzle } from 'drizzle-orm/better-sqlite3'
 import { patients, journals } from './schema'
+import * as schema from './schema'
 
 const dbPath = path.join(__dirname, '../../data/medix.sqlite')
 const sqlite = new Database(dbPath)
-const db = drizzle(sqlite)
+const db = drizzle(sqlite, { schema })
 
 function seed() {
   console.log('Seeding database...')
