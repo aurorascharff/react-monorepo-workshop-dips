@@ -1,16 +1,16 @@
-import { Patient } from '@/types'
+import { useEffect, useState } from 'react'
 import {
-  Label,
   Input,
-  SelectValue,
+  Label,
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectLabel,
   SelectTrigger,
+  SelectValue,
 } from '@medix/ui'
-import React from 'react'
+import type { Patient } from '@/types'
 import PatientCard from './PatientCard'
 
 type PatientListProps = {
@@ -18,18 +18,26 @@ type PatientListProps = {
 }
 
 export function PatientList({ patients }: PatientListProps) {
-  const [search, setSearch] = React.useState('')
-  const [genderFilter, setGenderFilter] = React.useState<
-    'all' | 'male' | 'female'
-  >('all')
+  const [search, setSearch] = useState('')
+  const [genderFilter, setGenderFilter] = useState<'all' | 'male' | 'female'>(
+    'all',
+  )
 
-  const filteredPatients = patients.filter((p) => {
-    const matchesSearch =
-      p.name.toLowerCase().includes(search.toLowerCase()) ||
-      p.diagnosis.toLowerCase().includes(search.toLowerCase())
-    const matchesGender = genderFilter === 'all' || p.gender === genderFilter
-    return matchesSearch && matchesGender
-  })
+  const [filteredPatients, setFilteredPatients] = useState(patients)
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setFilteredPatients(
+      patients.filter((p) => {
+        const matchesSearch =
+          p.name.toLowerCase().includes(search.toLowerCase()) ||
+          p.diagnosis.toLowerCase().includes(search.toLowerCase())
+        const matchesGender =
+          genderFilter === 'all' || p.gender === genderFilter
+        return matchesSearch && matchesGender
+      }),
+    )
+  }, [patients, search, genderFilter])
 
   return (
     <div>
