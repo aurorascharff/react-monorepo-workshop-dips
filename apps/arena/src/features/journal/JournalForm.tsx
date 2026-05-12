@@ -28,6 +28,11 @@ export function JournalForm({
       return
     }
 
+    if (content.length < 10) {
+      setError('Content must be at least 10 characters.')
+      return
+    }
+
     setIsSubmitting(true)
     try {
       const journal = await createJournal(patientId, { title, date, content })
