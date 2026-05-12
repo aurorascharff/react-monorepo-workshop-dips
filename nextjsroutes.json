@@ -1,0 +1,14 @@
+{
+  "workbench.editor.customLabels.patterns": {
+    "**/app/**/page.tsx": "${dirname} - page.tsx",
+    "**/app/**/layout.tsx": "${dirname} - layout.tsx",
+    "**/app/**/error.tsx": "${dirname} - error.tsx",
+    "**/app/**/not-found.tsx": "${dirname} - not-found.tsx",
+    "**/app/**/loading.tsx": "${dirname} - loading.tsx",
+    "**/app/**/template.tsx": "${dirname} - template.tsx",
+    "**/app/**/default.tsx": "${dirname} - default.tsx",
+    "**/app/**/forbidden.tsx": "${dirname} - forbidden.tsx",
+    "**/app/**/unauthorized.tsx": "${dirname} - unauthorized.tsx",
+    "**/app/**/route.ts": "${dirname} - route.ts"
+  }
+}
