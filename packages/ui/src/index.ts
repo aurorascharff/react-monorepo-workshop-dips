@@ -1,3 +1,5 @@
+export { BrandMark } from './BrandMark'
+
 // Base components (shadcn-style primitives)
 export { Button, buttonVariants } from './base/button'
 export type { ButtonProps } from './base/button'
