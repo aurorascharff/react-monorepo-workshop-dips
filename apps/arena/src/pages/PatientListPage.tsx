@@ -1,20 +1,23 @@
+import { useEffect, useState } from 'react'
+import { Spinner } from '@medix/ui'
 import { PatientList } from '@/features/patients/components/PatientList'
 import { fetchPatients } from '@/lib/api'
-import { Patient } from '@/types'
-import { Spinner } from '@medix/ui'
-import { useEffect, useState } from 'react'
+import type { Patient } from '@/types'
 
-export default function PatientListPage() {
+export function PatientListPage() {
   const [patients, setPatients] = useState<Patient[]>([])
-  const [isLoadingPatients, setIsLoadingPatients] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     fetchPatients()
       .then((data) => setPatients(data))
-      .finally(() => setIsLoadingPatients(false))
+      .finally(() => setIsLoading(false))
   }, [])
 
-  if (isLoadingPatients) return <Spinner />
-
-  return <PatientList patients={patients}></PatientList>
+  return (
+    <div>
+      <h1 className="mb-6 text-2xl font-bold tracking-tight">Patients</h1>
+      {isLoading ? <Spinner /> : <PatientList patients={patients} />}
+    </div>
+  )
 }

@@ -13,7 +13,7 @@ test('dashboard renders with seeded patient stats', async ({ page }) => {
 test('navigates to the patient list and filters patients', async ({ page }) => {
   await page.goto('/')
 
-  await page.getByRole('button', { name: /go to patient list/i }).click()
+  await page.getByRole('link', { name: /go to patient list/i }).click()
 
   await expect(page.getByRole('heading', { name: /^patients$/i })).toBeVisible()
 

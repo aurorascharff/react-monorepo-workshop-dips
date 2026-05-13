@@ -72,7 +72,11 @@ export function RootLayout() {
           </div>
         </header>
         <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
-          <ErrorBoundary>
+          <ErrorBoundary
+            title="This page is unavailable"
+            message="Something on this page failed. Try a different section or refresh the page."
+            logContext="App layout boundary"
+          >
             <Outlet />
           </ErrorBoundary>
         </main>

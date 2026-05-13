@@ -31,10 +31,7 @@ npm run dev
 | API + docs  | http://localhost:3001 |
 | medix.com   | http://localhost:3000 |
 
-Workshop tasks are listed in [exercises/](exercises/).
-
-Finished reference repo:
-[react-monorepo-workshop](https://github.com/aurorascharff/react-monorepo-workshop)
+Workshop tasks are in [exercises/](exercises/).
 
 ## Monorepo structure
 
@@ -95,3 +92,10 @@ GitHub Copilot is configured via `.github/copilot-instructions.md`, and the [`ve
 ## CI
 
 GitHub Actions runs `lint`, `typecheck`, `test`, `build`, and `e2e` on every push and pull request to `main`.
+
+## Reference
+
+Finished reference repo:
+[react-monorepo-workshop](https://github.com/aurorascharff/react-monorepo-workshop)
+
+The final reference repo includes the completed app, tests, and solution walkthroughs for each exercise.

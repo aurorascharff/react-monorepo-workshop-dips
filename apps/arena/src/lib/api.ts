@@ -14,9 +14,7 @@ export async function fetchPatient(id: string): Promise<Patient> {
   return res.json()
 }
 
-export async function fetchJournals(
-  patientId: string | undefined,
-): Promise<Journal[]> {
+export async function fetchJournals(patientId: string): Promise<Journal[]> {
   const res = await fetch(`${BASE_URL}/journals/patient/${patientId}`)
   if (!res.ok) throw new Error('Failed to fetch journal entries')
   return res.json()

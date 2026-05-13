@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { ArrowRight, Activity, Users, UserRound } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle, Spinner } from '@medix/ui'
-import { Patient } from '@/types'
 import { fetchPatients } from '@/lib/api'
-import { Link } from 'react-router'
+import type { Patient } from '@/types'
 
 export function DashboardPage() {
   const [patients, setPatients] = useState<Patient[]>([])
@@ -15,12 +15,11 @@ export function DashboardPage() {
       .finally(() => setIsLoading(false))
   }, [])
 
+  if (isLoading) return <Spinner />
+
   const total = patients.length
   const female = patients.filter((p) => p.gender === 'female').length
   const male = patients.filter((p) => p.gender === 'male').length
-
-  if (isLoading) return <Spinner />
-
   const recentPatients = patients.slice(0, 5)
 
   const statCards = [
@@ -77,7 +76,7 @@ export function DashboardPage() {
                 <li key={p.id}>
                   <Link
                     to={`/patients/${p.id}`}
-                    className="flex w-full items-center justify-between gap-4 px-6 py-3 text-left transition-colors hover:bg-accent"
+                    className="flex items-center justify-between gap-4 px-6 py-3 transition-colors hover:bg-accent"
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">{p.name}</span>
